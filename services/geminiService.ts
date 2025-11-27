@@ -1,7 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 import { AI_SYSTEM_INSTRUCTION } from '../constants';
 
-const apiKey = process.env.API_KEY || '';
+const apiKey = (import.meta as any).env?.VITE_API_KEY || '';
 let ai: GoogleGenAI | null = null;
 
 if (apiKey) {
@@ -11,17 +11,17 @@ if (apiKey) {
 // Simple keyword matching for demo purposes when no API key is present
 const simulateResponse = async (message: string): Promise<string> => {
   await new Promise(resolve => setTimeout(resolve, 1000)); // Fake latency
-  
+
   const lowerMsg = message.toLowerCase();
-  
+
   if (lowerMsg.includes('price') || lowerMsg.includes('cost') || lowerMsg.includes('how much')) {
     return "Our laptops range from roughly $900 for efficient business models to $3,500+ for high-end workstations. For example, the Dell XPS 15 starts around $1,899.";
   }
-  
+
   if (lowerMsg.includes('dell') || lowerMsg.includes('xps')) {
     return "The Dell XPS series is a top choice for creators. We have the XPS 15 9530 in stock with a stunning OLED display and Core i9 processor.";
   }
-  
+
   if (lowerMsg.includes('mac') || lowerMsg.includes('apple')) {
     return "We specialize in imported MacBook Pro M3 models. They offer incredible battery life and performance for creative professionals. The 14-inch M3 Max is a beast!";
   }

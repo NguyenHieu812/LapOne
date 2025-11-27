@@ -2,7 +2,8 @@
 export default {
   content: [
     "./index.html",
-    "./**/*.{js,ts,jsx,tsx}",
+    "./*.{js,ts,jsx,tsx}", // Quét các file ở thư mục gốc (App.tsx, main.tsx, constants.tsx...)
+    "./components/**/*.{js,ts,jsx,tsx}", // Quét toàn bộ trong thư mục components
   ],
   theme: {
     extend: {
