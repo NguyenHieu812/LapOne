@@ -62,6 +62,96 @@ export const LAPTOPS: Laptop[] = [
       screen: "16\" QHD+ 240Hz"
     },
     tags: ["Gaming", "RGB"]
+  },
+  {
+    id: 5,
+    name: "Razer Blade 16",
+    brand: "Razer",
+    price: "$2,699",
+    image: "https://picsum.photos/600/400?random=4",
+    description: "Desktop-grade gaming performance in a portable form factor. The Razer Blade 16 features a dual-mode mini-LED display and the latest NVIDIA graphics for high-fidelity gaming on the go.",
+    specs: {
+      cpu: "Core i9-13950HX",
+      ram: "32GB DDR5",
+      storage: "1TB SSD",
+      screen: "16\" QHD+ 240Hz"
+    },
+    tags: ["Gaming", "RGB"]
+  },
+  {
+    id: 6,
+    name: "Razer Blade 16",
+    brand: "Razer",
+    price: "$2,699",
+    image: "https://picsum.photos/600/400?random=4",
+    description: "Desktop-grade gaming performance in a portable form factor. The Razer Blade 16 features a dual-mode mini-LED display and the latest NVIDIA graphics for high-fidelity gaming on the go.",
+    specs: {
+      cpu: "Core i9-13950HX",
+      ram: "32GB DDR5",
+      storage: "1TB SSD",
+      screen: "16\" QHD+ 240Hz"
+    },
+    tags: ["Gaming", "RGB"]
+  },
+  {
+    id: 7,
+    name: "Razer Blade 16",
+    brand: "Razer",
+    price: "$2,699",
+    image: "https://picsum.photos/600/400?random=4",
+    description: "Desktop-grade gaming performance in a portable form factor. The Razer Blade 16 features a dual-mode mini-LED display and the latest NVIDIA graphics for high-fidelity gaming on the go.",
+    specs: {
+      cpu: "Core i9-13950HX",
+      ram: "32GB DDR5",
+      storage: "1TB SSD",
+      screen: "16\" QHD+ 240Hz"
+    },
+    tags: ["Gaming", "RGB"]
+  },
+  {
+    id: 8,
+    name: "Razer Blade 16",
+    brand: "Razer",
+    price: "$2,699",
+    image: "https://picsum.photos/600/400?random=4",
+    description: "Desktop-grade gaming performance in a portable form factor. The Razer Blade 16 features a dual-mode mini-LED display and the latest NVIDIA graphics for high-fidelity gaming on the go.",
+    specs: {
+      cpu: "Core i9-13950HX",
+      ram: "32GB DDR5",
+      storage: "1TB SSD",
+      screen: "16\" QHD+ 240Hz"
+    },
+    tags: ["Gaming", "RGB"]
+  },
+  {
+    id: 9,
+    name: "Razer Blade 16",
+    brand: "Razer",
+    price: "$2,699",
+    image: "https://picsum.photos/600/400?random=4",
+    description: "Desktop-grade gaming performance in a portable form factor. The Razer Blade 16 features a dual-mode mini-LED display and the latest NVIDIA graphics for high-fidelity gaming on the go.",
+    specs: {
+      cpu: "Core i9-13950HX",
+      ram: "32GB DDR5",
+      storage: "1TB SSD",
+      screen: "16\" QHD+ 240Hz"
+    },
+    tags: ["Gaming", "RGB"]
+  },
+  {
+    id: 10,
+    name: "Razer Blade 16",
+    brand: "Razer",
+    price: "$2,699",
+    image: "https://picsum.photos/600/400?random=4",
+    description: "Desktop-grade gaming performance in a portable form factor. The Razer Blade 16 features a dual-mode mini-LED display and the latest NVIDIA graphics for high-fidelity gaming on the go.",
+    specs: {
+      cpu: "Core i9-13950HX",
+      ram: "32GB DDR5",
+      storage: "1TB SSD",
+      screen: "16\" QHD+ 240Hz"
+    },
+    tags: ["Gaming", "RGB"]
   }
 ];
 

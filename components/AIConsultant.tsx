@@ -1,10 +1,15 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, Send, X, Bot, Sparkles, Zap } from 'lucide-react';
+import { Send, X, Bot, Sparkles, Zap } from 'lucide-react';
 import { generateAIResponse } from '../services/geminiService';
 import { ChatMessage } from '../types';
 
-// 1. Định nghĩa các câu hỏi gợi ý bằng Tiếng Việt
+// Thông tin Zalo của bạn
+const ZALO_NUMBER = '0823456232';
+const ZALO_LINK = `https://zalo.me/${ZALO_NUMBER}`;
+const ZALO_ICON_URL = "https://img.icons8.com/color/48/zalo.png";
+
+// Các câu hỏi gợi ý
 const QUICK_PROMPTS = [
   'Laptop nào phù hợp cho lập trình viên?',
   'MacBook Pro có sẵn những mẫu nào?',
@@ -46,16 +51,13 @@ const AIConsultant: React.FC = () => {
     setIsLoading(false);
   };
 
-  // 2. Hàm xử lý khi click vào nút gợi ý
   const handleQuickPromptClick = useCallback(async (prompt: string) => {
     if (isLoading) return;
 
-    // Tạo tin nhắn user
     const userMsg: ChatMessage = { role: 'user', text: prompt, timestamp: new Date() };
     setMessages(prev => [...prev, userMsg]);
     setIsLoading(true);
 
-    // Xử lý và hiển thị phản hồi của bot
     const responseText = await generateAIResponse(prompt);
     const botMsg: ChatMessage = { role: 'model', text: responseText, timestamp: new Date() };
     setMessages(prev => [...prev, botMsg]);
@@ -65,15 +67,29 @@ const AIConsultant: React.FC = () => {
 
   return (
     <>
-      {/* Floating Action Button */}
+      <motion.a
+        href={ZALO_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`fixed bottom-20 right-4 z-50 p-3 rounded-full shadow-lg flex items-center justify-center ${isOpen ? 'hidden' : 'flex'}`}
+        style={{ padding: '4px' }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <img src={ZALO_ICON_URL} alt="Chat Zalo" className="w-16 h-16" />
+      </motion.a>
+      {/* Nút Chat AI (Vị trí: bottom-20, right-6) */}
       <motion.button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 p-4 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-teal-500/30 flex items-center justify-center ${isOpen ? 'hidden' : 'flex'}`}
+        // Đã thay đổi vị trí để xếp dọc
+        className={`fixed bottom-6 right-6 z-50 p-4 rounded-full bg-linear-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-teal-500/30 flex items-center justify-center ${isOpen ? 'hidden' : 'flex'}`}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
         <Sparkles className="w-6 h-6 animate-pulse" />
       </motion.button>
+
+
 
       {/* Chat Window */}
       <AnimatePresence>
@@ -87,7 +103,7 @@ const AIConsultant: React.FC = () => {
             {/* Header */}
             <div className="p-4 bg-slate-800 border-b border-slate-700 flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-500 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-linear-to-tr from-emerald-500 to-teal-500 flex items-center justify-center">
                   <Bot className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -105,11 +121,11 @@ const AIConsultant: React.FC = () => {
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-900/50">
-              {/* Khu vực Quick Prompts được thêm vào đây */}
+              {/* Quick Prompts */}
               {messages.length === 1 && messages[0].role === 'model' && (
                 <div className="py-2">
                   <p className="text-xs font-semibold text-slate-400 mb-2 flex items-center gap-1">
-                    <Zap className="w-3 h-3 text-yellow-400" /> Câu hỏi gợi ý:
+                    <Zap className="w-3 h-3 text-yellow-400" /> Câu hỏi gợi ý nhanh:
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {QUICK_PROMPTS.map((prompt, index) => (
@@ -128,7 +144,7 @@ const AIConsultant: React.FC = () => {
                   <hr className="border-slate-700 mt-4" />
                 </div>
               )}
-              {/* Kết thúc Khu vực Quick Prompts */}
+              {/* Kết thúc Quick Prompts */}
 
 
               {messages.map((msg, i) => (
@@ -138,8 +154,8 @@ const AIConsultant: React.FC = () => {
                 >
                   <div
                     className={`max-w-[80%] rounded-2xl p-3 text-sm leading-relaxed ${msg.role === 'user'
-                        ? 'bg-emerald-600 text-white rounded-br-none'
-                        : 'bg-slate-800 text-slate-200 border border-slate-700 rounded-bl-none'
+                      ? 'bg-emerald-600 text-white rounded-br-none'
+                      : 'bg-slate-800 text-slate-200 border border-slate-700 rounded-bl-none'
                       }`}
                   >
                     {msg.text}
