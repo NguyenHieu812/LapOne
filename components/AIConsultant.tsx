@@ -8,7 +8,6 @@ import { ChatMessage } from '../types';
 const ZALO_NUMBER = '0823456232';
 const ZALO_LINK = `https://zalo.me/${ZALO_NUMBER}`;
 const ZALO_ICON_URL = "https://img.icons8.com/color/48/zalo.png";
-
 // Các câu hỏi gợi ý
 const QUICK_PROMPTS = [
   'Laptop nào phù hợp cho lập trình viên?',

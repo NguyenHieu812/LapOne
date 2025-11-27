@@ -4,22 +4,126 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  @apply bg-slate-950 text-slate-50;
-  overflow-x: hidden;
+/* ----------------------------------------------------------------- */
+/* 1. ĐỊNH NGHĨA BIẾN CSS CHO THEME */
+/* ----------------------------------------------------------------- */
+
+/* DARK MODE (Mặc định) */
+.dark {
+  --bg-primary: #0f172a;
+  --text-base: #f1f5f9;
+  --bg-component: #1e293b;
+  --bg-component-darker: #0f172a;
+
+  --border-color: #334155;
+  /* slate-700 */
+
+  /* Navbar */
+  --nav-bg-scrolled: rgba(15, 23, 42, 0.9);
+  /* slate-950/90 */
+  --nav-link-color: #cbd5e1;
+  /* slate-300 */
+  --nav-link-color-mobile: #cbd5e1;
+  /* slate-300 */
+
+  /* Gradient text */
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
 }
 
-/* Custom Scrollbar */
+/* LIGHT MODE */
+.light {
+  /* Nền và màu chữ cơ bản */
+  --bg-primary: #ffffff;
+  /* white */
+  --text-base: #0f172a;
+  /* slate-950 */
+
+  /* Màu nền của các thành phần */
+  --bg-component: #f1f5f9;
+  /* slate-100 */
+  --bg-component-darker: #e2e8f0;
+  /* slate-200 */
+
+  /* Màu đường viền */
+  --border-color: #cbd5e1;
+  /* slate-300 */
+
+  /* Navbar */
+  --nav-bg-scrolled: rgba(255, 255, 255, 0.95);
+  /* white/95 */
+  --nav-link-color: #475569;
+  /* slate-600 */
+  --nav-link-color-mobile: #1e293b;
+  /* slate-800 */
+
+  /* Gradient text */
+  --text-primary: #1e293b;
+  /* slate-800 */
+  --text-secondary: #475569;
+  /* slate-600 */
+}
+
+
+/* ----------------------------------------------------------------- */
+/* 2. ÁP DỤNG THAY THẾ CSS CŨ BẰNG BIẾN */
+/* ----------------------------------------------------------------- */
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-base);
+  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* App.tsx wrapper */
+.min-h-screen {
+  background-color: var(--bg-primary);
+}
+
+.text-color {
+  color: var(--text-base);
+}
+
+
+/* Navbar Styling */
+.nav-scrolled {
+  background-color: var(--nav-bg-scrolled);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.nav-transparent {
+  background-color: transparent;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.text-nav-link {
+  color: var(--nav-link-color);
+}
+
+.text-nav-link-mobile {
+  color: var(--nav-link-color-mobile);
+}
+
+.mobile-menu-bg {
+  background-color: var(--bg-component);
+}
+
+/* Custom Scrollbar (Cần được cập nhật để phù hợp với theme, tạm giữ màu dark) */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: var(--bg-component-darker);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: var(--border-color);
   border-radius: 4px;
 }
 
