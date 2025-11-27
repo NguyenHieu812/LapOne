@@ -5,6 +5,7 @@ interface ButtonProps extends HTMLMotionProps<"button"> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
+  className?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({ 
